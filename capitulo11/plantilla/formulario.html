@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="wrapper">datos ingresados</div>
+<!--aca el action lo pusimos a redireccionar a la misma pagina-->
+<form  method="get" onsubmit="return valForm()">
+    <input type="text" placeholder="name" name="name" />
+    <input type="text" placeholder="edad" name="edad" />
+    <input type="submit" value="send" />
+</form>
+<script>
+    //cundo se envia un formulario lo ideaal en desecadenar un evento esto se hace en la etiqueta form le agregamos el onsubmit o de otra manera
+    //esto se activara siempre que se active est etiqueta dentr del formulario <input type="submit" value="send">
+    //tambien podemos redirigir a otra pagina o cualquier otra cossa con la etiqueta accion y en cuant el metodo se recoimienda siempre el post en este caso sera get que es mas facil de trabajar <form action="anotherpage.html" method="get" onsubmit="doStuff()">
+    //con el get se enviara la infor como clave:valor atraves de un url algo asi www.ejemplo.com/otra página.html?nombre=edward despues del signo de interrogacion es donde se encuentran los valores en forma clav e:valor en este caso nombre=edward
+    // puede usar las variables de la URL. Esto se puede hacer en JavaScript de anotherpage.html haciendo algo como esto:
+    let q = window.location.search;
+    //el q obtiene todos los datos despues del signo de ?
+    //el params es una variable que almacenara los datos clave:valor que tenemos en q
+    let params = new URLSearchParams(q);
+    //y con el params.get obtenemos los datos con respecto a su clave
+    let name = params.get("name");
+    let edad =params.get("edad");
+    console.log(mensaje());
+    console.log(edad);
+    function valForm(){
+
+        let p=this.event.target.children;
+        if (p.name.value==""){
+            message("necesita ingresar nombre")
+
+            return false;
+        }if (p.edad.value==""){
+            message("necesita ingresar nombre")
+            return false;
+        }
+
+        return true;
+    }
+    function mensaje(){
+        let men = document.getElementById("wrapper")
+        men.innerText = men.innerText + " " + `${params.get("name")}` +  " " + `${params.get("edad")}`;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let text = "me encanta javascript";
+    //match no es una expresion regular pero nos ayudara a entender las expresiones regulares el i despus del / es para que no haga distincin entre mayuscula y minusculsa
+    console.log(text.match(/javascript/i));
+    // tambien podemos especificarle multiples opciones utilizando | el pipe
+    text = "me encanta JavaScript y React"
+    console.log(text.match(/javascript|nodejs|react/i));
+    //en este caso solo me mmostrara solo una coincidencia pero si quiero global usamos g para que me las de pro aparte
+    text="me encanta React y Nodejs";
+    console.log(text.match(/javascript|nodejs|react/gi)) // solo devolviendonos las palabras coincidentes podemos mejorar esto agregando lo sig
+
+    //ahora para seleccionar si tene algun caracter hacemos lo siguente
+    text = "d";
+    console.log(text.match(/[acd]/i)); // asi estamso diciendo que tenga alguno de esos tres caracteres
+    //si queremos que este en un rango de caracteres digamos la sucesion de caracteres de la a,b,c,d lo hacemos asi - con el guien le decimos ese rango
+    console.log(text.match(/[a-d]/));
+    //si queremos que sean eltrsa minusculas o mayusculas sera asi Y TAMBIEN PODEMOS UNIR NUMEROS ETC
+    text = " T t 2 30";
+    console.log(text.match(/[a-zA-Z0-9]/g));
+    //para caracteres especiales( que en expresiones regulares se usan apra expresarun patron) en match usamos la barra invertuda \
+    text = "solo algo de texto."
+    console.log(text.match(/\./g));
+    //grupos hay uchas razones apra agrupar expresiones regulares para esto usamos parentesis y el \s es decirle un espacio en blanco osea debe tener love ó dislike \s le esta diciendo espacio javascript o spider si hubiera otra cosa que no fueran alguna de esas opciones que puse no me hallaria coincidencia o si tiene digamos 3 especios pues tampoco encontraria coincidencia ej:
+    text = "I love JavaScript!";
+    console.log(text.match(/(love|dislike)\s(javascript|spiders)/gi));
+    //los grupos son muy utulies si los repetimos por ehjemplo si quiero que solo para los primeros 4 caracteres sean solo alfanumericos hacemos esto me generara el resultado de lo que cumplan esa condicion en esa frase dandome una matriz interesante
+    text = "s3rg1o es un cr4ck!";
+    console.log(text.match(/[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]/g));
+    //hacer esa repeticion es terrible se tienen mejores maneras para hacer esto ejemplo si quieremos un caracter que puede estar o no precedido por una n usamos el ?
+    texto = "You are doing great!";
+    console.log(text.match(/n?g/gi));
+    //Podría decirse que una vez no es realmente un ejemplo de repetición. Veamos cómo conseguir más repeticiones. Si desea algo al menos una vez, pero opcionalmente más a menudo, puede utilizar elsigno más: +. Aquí hay un ejemplo:
+    texto = "123aww123123121aaa";
+    console.log(texto.match(/(123)+/));
+    //También hay situaciones en las que desea que una determinada expresión regular coincida cualquier número de veces, lo que se puede indicar con el asterisco: *. Aquí hay un ejemplo de patrón de expresiones regulares:
+    console.log(texto.match(/(123)*/));
+    //tambien podemos ser mas especificos usando la expresion {min,max}
+    text = "abcabcabc";
+    console.log(text.match(/(abc){1,2}/));
+    //definiendo grupos
+    text = "I love JavaScript!";
+    console.log(text.match(/(?<languagewewe>javascript)/i));
+
+
+</script>
+</body>
+</html>

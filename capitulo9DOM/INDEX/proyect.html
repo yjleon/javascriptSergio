@@ -1,0 +1,104 @@
+<!DOCTYPE html >
+<html>
+<p class="lel"></p>
+<div class="output"></div>
+<div class="output">
+   <h1>Hello</h1>
+   <div>Test</div>
+   <ul>
+   <li id="one">One</li>
+   <li class="red">Two</li>
+   <li id="one">One</li>
+   <li class="red">Two</li>
+   <li id="one">One</li>
+   <li class="red">Two</li>
+   <li id="one">One</li>
+   <li class="red">Two</li>
+   <li id="one">One</li>
+   <li class="red">Two</li>
+   <li id="one">One</li>
+   <li class="red">Two</li>
+   <li id="one">One</li>
+   <li class="red">Two</li>
+
+   </ul>
+   <ol>
+      <li id="one">One</li>
+      <li class="red">Two</li>
+      <li id="one">One</li>
+      <li class="red">Two</li>
+      <li id="one">One</li>
+      <li class="red">Two</li>
+      <li id="one">One</li>
+      <li class="red">Two</li>
+      <li id="one">One</li>
+      <li class="red">Two</li>
+      <li id="one">One</li>
+      <li class="red">Two</li>
+      <li id="one">One</li>
+      <li class="red">Two</li>
+      
+      </ol>
+   <div>Test</div>
+  </div>
+  
+ <script>
+    const ele1 = document.querySelector(".output");
+
+    console.log(ele1.childElementCount);
+    //el textcontenet me da el texto que contenga ese selector
+    let contenidoEscrito = ele1.textContent
+    //para actualziar lo que contenga hacemos los siguente
+    ele1.textContent = document.URL;
+    //aca el .add si es un meto y por ese se ponene paretnesis y eso añadira la clase red a mi contenedor div como ya tenia una clase llamada output quedara por dentro outpu red se peude ver dandole inspeccioanr elemento
+    ele1.classList.add("red");
+    ele1.id = "tester";
+    //basicamente cuando es actualizar atriburos al los elementos se hace como sifuera programacion orietnada a objetos el .id es la propiedad y la actualizamos a tedter
+    ele1.style.backgroundColor = "red";
+
+    //TAMBIEN LO HUBIERAMAMS PODIDO SELECCIONAR CON EL NOMBRE DE ETIQUETA O CON EL GETELEMENTBYID
+    const elementos = document.querySelectorAll(".output")
+    console.log(elementos)
+    const elqueNecesito = elementos[1];
+    console.log(elqueNecesito)
+    const subelementos = elqueNecesito.childNodes;
+    console.log(subelementos);
+    //console.log("esyte es el typo " , typeof(subelementos[0]) );
+    let i = 1;
+    for (const iterator of elementos) {
+       if (iterator.childElementCount != 0) {
+          //creo que hubbiera quitado el text si hubiera usado solo child con childnodes pero es mejor usar el childnodes
+          let etquetas = iterator.childNodes;
+          etquetas.forEach(e => {
+             if (e.nodeName === "UL" || "OL") {
+                e.id = "mainlist";
+                const losli = e.childNodes;
+                console.log(losli)
+                losli.forEach(t => {
+                   if (t.nodeName === "LI") {
+
+                      t.id = `${i}`;
+                      if (i % 2) {
+                         t.style.color = "red";
+                      } else {
+                         t.style.color = "blue";
+                      }
+                      i++
+                   }
+
+                })
+             } else if (e.nodeName != "#text") {
+                e.id = `${i}`;
+                if (i % 2) {
+                   e.style.color = "red";
+                } else {
+                   e.style.color = "blue";
+                }
+                i++;
+             }
+          });
+       }
+    }
+
+    </script>
+</html>

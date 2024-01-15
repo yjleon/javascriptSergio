@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<body>
+<div id="welcome">Hi there!</div>
+<form id="myForm">
+    <input type="text" id="firstname" placeholder="First name" />
+    <input type="text" id="lastname" placeholder="Last name" />
+    <input type="button" id="submitBtn" value="Submit" />
+</form>
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        let p = e.target.parentElement;
+        message("Welcome " + document.getElementById('firstname').value + " " + document.getElementById('lastname').value);
+    });
+
+    function message(m) {
+        document.getElementById("welcome").innerHTML = m;
+    }
+</script>
+</body>
+</html>

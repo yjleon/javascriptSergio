@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //los atributos son las cosas o caractesticvas que le damos a un elemente html osea lo que esta en la etiqueta de apertura dentro del elemento con esto podemos cambiar todo
+
+        function cambioAtributos(){
+            let el=document.getElementById("froma");
+            el.setAttribute("style","background-color:green;border:1px solid black");
+            el.setAttribute("id","new");
+            el.setAttribute("class","circulo");
+        }
+    </script>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+        }
+        .circulo{
+            border-radius: 50%;
+        }
+    </style>
+
+    <div id="froma" class=".cuadrado"></div>
+    <button onclick="cambioAtributos()">cambiar caracateristicas</button>
+
+</body>
+</html>

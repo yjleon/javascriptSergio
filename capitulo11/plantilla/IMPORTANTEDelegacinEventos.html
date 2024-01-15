@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h1>esto es captura de evento y burbujeo</h1>
+<div id="padre">
+    <button id="hijo">Haz clic en mí</button>
+    <P>ESTASMO AGREGANDO MAJEADOR DE EVENTOS TANTO APRA E PADRE COMO PARA EL HIJO EXCEPTUANDO ESTE P POR QUE NO SE LO AGREGUE </P>
+</div>
+<h1>est es DELEGACION DE EVENTOS la mas eficiente</h1>
+<div>
+    <ul id="miLista">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <!-- Imagina que hay muchos más elementos -->
+    </ul>
+    <h2>En lugar de agregar un manejador de eventos a cada elemento "li que es cada item de la lista", puedes agregar un solo manejador al elemento "ul: que es la lista "</h2>
+
+
+</div>
+
+<script>
+    //todo delegacion de eventos
+    // Obtén el elemento
+    var miLista = document.getElementById('miLista');
+
+    // Agrega un manejador de eventos al elemento
+    miLista.addEventListener('click', function(event) {
+        var elementoClicado = event.target;
+
+        if (elementoClicado.tagName === 'LI') {
+            alert('¡Haz hecho clic en ' + elementoClicado.textContent + '!');
+        }
+    });
+    //todo Con este código, cuando haces clic en un elemento <li>, se activa el manejador de eventos del elemento <ul>. Luego, event.target te permite saber en qué elemento <li> se hizo clic.
+    //------------------------------------------------------------//------
+    //todo Ahora, vamos a agregar manejadores de eventos para ilustrar la captura y el burbujeo de eventos:
+    var padre = document.getElementById('padre');
+    var hijo = document.getElementById('hijo');
+
+    // Agrega un manejador de eventos al elemento padre
+    padre.addEventListener('click', function(event) {
+        alert('¡Haz hecho clic en el padre!');
+    },true); // Nota que el tercer argumento es 'true', lo que significa que este manejador se activará durante la fase de captura
+
+    // Agrega un manejador de eventos al elemento hijo
+    hijo.addEventListener('click', function(event) {
+        alert('¡Haz hecho clic en el hijo!');
+    }); // Por defecto, el tercer argumento es 'false', lo que significa que este manejador se activará durante la fase de burbujeo
+    //todo Si haces clic en el botón, verás dos alertas: “¡Haz hecho clic en el padre!” y luego “¡Haz hecho clic en el hijo!”. Esto se debe a que primero se activa el manejador de eventos del padre (fase de captura), y luego se activa el manejador de eventos del hijo (fase de burbujeo).
+
+</script>
+
+</body>
+</html>

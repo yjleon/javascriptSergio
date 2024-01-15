@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Formulario sencillo</h2>
+
+<form id="myForm">
+    <label for="fname">Nombre:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <button type="button" id="boton1">Boton 1</button>
+    <button type="button" id="boton2">Boton 6</button>
+</form>
+
+<script>
+    function presionado(f){
+        console.log("presionio",f.innerText)
+    }
+    document.getElementById('boton1').addEventListener('click', presionado);
+
+    document.getElementById('boton2').addEventListener('click', function(e) {
+        alert('Presionaste el ' + e.target.innerText);
+    });
+</script>
+
+</body>
+</html>
